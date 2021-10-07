@@ -1,24 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HVD_Comic_Serif_Pro.otf">
+            <string>HVDComicSerifPro</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Cookie_Monster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZQr-4J-1s1"/>
+                        <viewControllerLayoutGuide type="bottom" id="R83-3q-Rr0"/>
+                    </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="score" translatesAutoresizingMaskIntoConstraints="NO" id="xKD-ju-LUD">
+                                <rect key="frame" x="20" y="50" width="120" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="4lX-ZE-J2P"/>
+                                    <constraint firstAttribute="width" constant="120" id="Hra-d7-dha"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Nfh-DX-6TD"/>
+                                    <constraint firstAttribute="height" constant="50" id="yRf-gD-Mdb"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="7Or-dS-TKN">
+                                <rect key="frame" x="244" y="50" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Yef-0V-rd5"/>
+                                    <constraint firstAttribute="width" constant="150" id="hab-OX-rb1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXP-pz-fHU">
+                                <rect key="frame" x="73.5" y="61.5" width="13.5" height="27"/>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqO-Yh-p8q">
+                                <rect key="frame" x="269" y="61.5" width="60" height="27"/>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2b-tm-Mij">
+                                <rect key="frame" x="132" y="818" width="150" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bze-DI-ira"/>
+                                    <constraint firstAttribute="height" constant="48" id="ofh-os-rTj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="22"/>
+                                <state key="normal" title="SHUFFLE" backgroundImage="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="shuffleButtonTapped" destination="BV1-FR-VrT" eventType="touchUpInside" id="FYq-Xs-cY7"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GameOver" translatesAutoresizingMaskIntoConstraints="NO" id="B38-JN-wKV">
+                                <rect key="frame" x="47" y="190" width="320" height="150"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="t2b-tm-Mij" secondAttribute="bottom" constant="30" id="6ax-On-nAv"/>
+                            <constraint firstItem="B38-JN-wKV" firstAttribute="top" secondItem="xKD-ju-LUD" secondAttribute="bottom" constant="90" id="6lK-Sg-DEf"/>
+                            <constraint firstItem="xKD-ju-LUD" firstAttribute="top" secondItem="ZQr-4J-1s1" secondAttribute="bottom" constant="6" id="77j-RY-RWi"/>
+                            <constraint firstItem="xKD-ju-LUD" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="20" id="GGw-WP-qWE"/>
+                            <constraint firstItem="iXP-pz-fHU" firstAttribute="centerY" secondItem="xKD-ju-LUD" secondAttribute="centerY" id="IDX-Gq-qDW"/>
+                            <constraint firstItem="iXP-pz-fHU" firstAttribute="centerX" secondItem="xKD-ju-LUD" secondAttribute="centerX" id="NYO-RN-dCS"/>
+                            <constraint firstItem="ZqO-Yh-p8q" firstAttribute="centerY" secondItem="7Or-dS-TKN" secondAttribute="centerY" id="PC3-Gx-s88"/>
+                            <constraint firstItem="7Or-dS-TKN" firstAttribute="top" secondItem="ZQr-4J-1s1" secondAttribute="bottom" constant="6" id="SbU-pH-Cmw"/>
+                            <constraint firstItem="xKD-ju-LUD" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="20" id="T4W-m5-h2J"/>
+                            <constraint firstItem="xKD-ju-LUD" firstAttribute="top" secondItem="ZQr-4J-1s1" secondAttribute="bottom" constant="6" id="TcC-oi-0gS"/>
+                            <constraint firstItem="ZqO-Yh-p8q" firstAttribute="centerX" secondItem="7Or-dS-TKN" secondAttribute="centerX" constant="-20" id="bTs-UH-gET"/>
+                            <constraint firstAttribute="trailing" secondItem="7Or-dS-TKN" secondAttribute="trailing" constant="20" id="jZU-zw-PYE"/>
+                            <constraint firstItem="t2b-tm-Mij" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="sz8-ja-3bb"/>
+                            <constraint firstItem="B38-JN-wKV" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="zD9-Hj-1c8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameOverImage" destination="B38-JN-wKV" id="SMG-Qw-4Vf"/>
+                        <outlet property="scoreLabel" destination="iXP-pz-fHU" id="2Lm-QO-UEr"/>
+                        <outlet property="shuffleButton" destination="t2b-tm-Mij" id="OSI-er-zdo"/>
+                        <outlet property="timeLabel" destination="ZqO-Yh-p8q" id="iaf-wd-g71"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="134.78260869565219" y="91.741071428571431"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Button" width="100" height="36"/>
+        <image name="GameOver" width="320" height="150"/>
+        <image name="score" width="119" height="51"/>
+        <image name="time" width="149" height="49"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
