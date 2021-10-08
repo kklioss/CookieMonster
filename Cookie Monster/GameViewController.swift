@@ -66,7 +66,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
                                request: request,
                                completionHandler: { [self] ad, error in
                                 if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    print("Failed to load interstitial ad: \(error.localizedDescription)")
                                     return
                                 }
                                 interstitial = ad
@@ -75,11 +75,14 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
     }
 
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        shuffleButton?.isHidden = true
+        //bannerView.isHidden = false
+        //shuffleButton?.isHidden = true
     }
 
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        shuffleButton?.isHidden = false
+        print("Failed to load banner ad: \(error.localizedDescription)")
+        //bannerView.isHidden = true
+        //shuffleButton?.isHidden = false
     }
 
     func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
