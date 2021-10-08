@@ -52,7 +52,7 @@
                                 <rect key="frame" x="47" y="204" width="320" height="150"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fP-7j-dHw" customClass="GADBannerView">
-                                <rect key="frame" x="47" y="826" width="320" height="50"/>
+                                <rect key="frame" x="47" y="792" width="320" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Hg2-Oh-zom"/>
@@ -72,7 +72,7 @@
                             <constraint firstItem="7Or-dS-TKN" firstAttribute="top" secondItem="MzB-qI-H7O" secondAttribute="top" constant="20" id="SbU-pH-Cmw"/>
                             <constraint firstItem="8fP-7j-dHw" firstAttribute="centerX" secondItem="MzB-qI-H7O" secondAttribute="centerX" id="atf-5I-4TS"/>
                             <constraint firstItem="ZqO-Yh-p8q" firstAttribute="centerX" secondItem="7Or-dS-TKN" secondAttribute="centerX" constant="-20" id="bTs-UH-gET"/>
-                            <constraint firstAttribute="bottom" secondItem="8fP-7j-dHw" secondAttribute="bottom" constant="20" id="fDD-PR-udO"/>
+                            <constraint firstItem="MzB-qI-H7O" firstAttribute="bottom" secondItem="8fP-7j-dHw" secondAttribute="bottom" constant="20" id="fDD-PR-udO"/>
                             <constraint firstItem="MzB-qI-H7O" firstAttribute="trailing" secondItem="7Or-dS-TKN" secondAttribute="trailing" constant="20" id="jZU-zw-PYE"/>
                             <constraint firstItem="B38-JN-wKV" firstAttribute="centerX" secondItem="MzB-qI-H7O" secondAttribute="centerX" id="zD9-Hj-1c8"/>
                         </constraints>
