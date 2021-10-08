@@ -183,6 +183,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
     }
     
     func collapse(for cookieBlock: Set<Cookie>) {
+        scene.isUserInteractionEnabled = false
         scene.animateCollapsedCookies(for: cookieBlock) {
             self.score += self.scene.game.score(blockSize: cookieBlock.count)
             self.updateScoreLabel()
@@ -194,6 +195,8 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
                 self.scene.animateShiftingCookies(in: shiftingCookies) {
                     if self.scene.game.isOver() {
                         self.finishGame()
+                    } else {
+                        self.scene.isUserInteractionEnabled = true
                     }
                 }
             }

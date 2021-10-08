@@ -287,9 +287,7 @@ class GameScene: SKScene {
                     showSelectionIndicator(of: selectedCookies)
                     scoreLabel.text = String(format: "%ld", score)
                     scoreLabel.position = location
-                    if !cookieLayer.contains(scoreLabel) {
-                        cookieLayer.addChild(scoreLabel)
-                    }
+                    cookieLayer.addChild(scoreLabel)
                     run(tapSound)
                 } else {
                     selectedCookies.removeAll()
