@@ -9,12 +9,14 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import AVFoundation
+import GoogleMobileAds
 
 class GameViewController: UIViewController {
     @IBOutlet weak var scoreLabel:UILabel?
     @IBOutlet weak var timeLabel:UILabel?
     @IBOutlet weak var shuffleButton:UIButton?
     @IBOutlet weak var gameOverImage:UIImageView?
+    @IBOutlet weak var bannerView: GADBannerView?
     
     var scene: GameScene!
     var score = 0
@@ -47,6 +49,12 @@ class GameViewController: UIViewController {
             view.presentScene(scene)
         }
 
+        //bannerView?.adUnitID = "ca-app-pub-5721843955514300/9838170530"
+        // test ads
+        bannerView?.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView?.rootViewController = self
+        bannerView?.load(GADRequest())
+        
         startGame()
         backgroundMusic?.play()
     }
