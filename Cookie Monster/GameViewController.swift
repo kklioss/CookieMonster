@@ -157,6 +157,13 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
     }
     
     func finishGame() {
+        // Bonus points
+        let leftOver = scene.game.numCookies()
+        if leftOver < 5 {
+            score += 20 * (5 - leftOver)
+            updateScoreLabel()
+        }
+
         games += 1
         timer?.invalidate()
         timer = nil

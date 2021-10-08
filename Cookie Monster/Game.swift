@@ -22,6 +22,18 @@ class Game {
         }
     }
     
+    func numCookies() -> Int {
+        var n = 0
+        for x in 0..<cookies.count {
+            for cookie in cookies[x] {
+                if cookie != nil {
+                    n += 1
+                }
+            }
+        }
+        return n
+    }
+
     func score(blockSize: Int) -> Int {
         return blockSize < 2 ? 0 : blockSize * (blockSize - 1)
     }
