@@ -50,6 +50,7 @@ class GameScene: SKScene {
         addChild(background)
         addChild(gameLayer)
         
+        // set up score label
         scoreLabel.fontSize = 32
         scoreLabel.fontColor = UIColor.white
         scoreLabel.zPosition = 300
@@ -61,60 +62,10 @@ class GameScene: SKScene {
         scoreLabelBackground.zPosition = -1
         scoreLabel.addChild(scoreLabelBackground)
 
+        // score label move action
         let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 600), duration: 0.3)
         moveAction.timingMode = .easeOut
         scoreMoveAction = SKAction.sequence([moveAction, SKAction.removeFromParent()])
-        
-        height = Int(size.height / tileSize.height) - 6 // leave 3 rows margin in top and bottom
-        width = Int(size.width / tileSize.width)
-        
-        let layerPosition = CGPoint(
-            x: -tileSize.width * CGFloat(width) / 2,
-            y: -tileSize.height * CGFloat(height) / 2)
-        
-        tilesLayer.position = layerPosition
-        maskLayer.position = layerPosition
-        cropLayer.maskNode = maskLayer
-        gameLayer.addChild(tilesLayer)
-        gameLayer.addChild(cropLayer)
-        
-        cookieLayer.position = layerPosition
-        cropLayer.addChild(cookieLayer)
-        
-        // add tiles
-        for x in 0..<width {
-            for y in 0..<height {
-                let tileNode = SKSpriteNode(imageNamed: "MaskTile")
-                tileNode.size = tileSize
-                tileNode.position = pointFor(x, y)
-                maskLayer.addChild(tileNode)
-            }
-        }
-        
-        for x in 0...width {
-            for y in 0...height {
-                let topLeft     = (x > 0) && (y < height) ? 1 : 0
-                let bottomLeft  = (x > 0) && (y > 0) ? 1 : 0
-                let topRight    = (x < width) && (y < height) ? 1 : 0
-                let bottomRight = (x < width) && (y > 0) ? 1 : 0
-                
-                var tileId = topLeft
-                tileId = tileId | topRight << 1
-                tileId = tileId | bottomLeft << 2
-                tileId = tileId | bottomRight << 3
-                
-                // Values 0 (no tiles), 6 and 9 (two opposite tiles) are invalid.
-                if tileId != 0 && tileId != 6 && tileId != 9 {
-                    let tileNode = SKSpriteNode(imageNamed: String(format: "Tile_%ld", tileId))
-                    tileNode.size = tileSize
-                    var point = pointFor(x, y)
-                    point.x -= tileSize.width / 2
-                    point.y -= tileSize.height / 2
-                    tileNode.position = point
-                    tilesLayer.addChild(tileNode)
-                }
-            }
-        }
     }
     
     func newGame() {
@@ -236,9 +187,63 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
         
+        let window = UIApplication.shared.windows[0]
+        let safeArea = window.safeAreaLayoutGuide.layoutFrame
+        // 180 points for top score/time and bottom banner
+        height = Int((safeArea.height - 180) / tileSize.height)
+        width = Int(safeArea.width / tileSize.width)
+
+        let layerPosition = CGPoint(
+            x: -tileSize.width * CGFloat(width) / 2,
+            y: -tileSize.height * CGFloat(height) / 2)
+
+        tilesLayer.position = layerPosition
+        maskLayer.position = layerPosition
+        cropLayer.maskNode = maskLayer
+        gameLayer.addChild(tilesLayer)
+        gameLayer.addChild(cropLayer)
+
+        cookieLayer.position = layerPosition
+        cropLayer.addChild(cookieLayer)
+
+        // add tiles
+        for x in 0..<width {
+            for y in 0..<height {
+                let tileNode = SKSpriteNode(imageNamed: "MaskTile")
+                tileNode.size = tileSize
+                tileNode.position = pointFor(x, y)
+                maskLayer.addChild(tileNode)
+            }
+        }
+
+        for x in 0...width {
+            for y in 0...height {
+                let topLeft     = (x > 0) && (y < height) ? 1 : 0
+                let bottomLeft  = (x > 0) && (y > 0) ? 1 : 0
+                let topRight    = (x < width) && (y < height) ? 1 : 0
+                let bottomRight = (x < width) && (y > 0) ? 1 : 0
+
+                var tileId = topLeft
+                tileId = tileId | topRight << 1
+                tileId = tileId | bottomLeft << 2
+                tileId = tileId | bottomRight << 3
+
+                // Values 0 (no tiles), 6 and 9 (two opposite tiles) are invalid.
+                if tileId != 0 && tileId != 6 && tileId != 9 {
+                    let tileNode = SKSpriteNode(imageNamed: String(format: "Tile_%ld", tileId))
+                    tileNode.size = tileSize
+                    var point = pointFor(x, y)
+                    point.x -= tileSize.width / 2
+                    point.y -= tileSize.height / 2
+                    tileNode.position = point
+                    tilesLayer.addChild(tileNode)
+                }
+            }
+        }
     }
-        
+
     func touchDown(atPoint pos : CGPoint) {
         
     }
