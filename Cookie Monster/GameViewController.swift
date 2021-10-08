@@ -11,14 +11,16 @@ import GameplayKit
 import AVFoundation
 import GoogleMobileAds
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADFullScreenContentDelegate {
     @IBOutlet weak var scoreLabel:UILabel?
     @IBOutlet weak var timeLabel:UILabel?
     @IBOutlet weak var shuffleButton:UIButton?
     @IBOutlet weak var gameOverImage:UIImageView?
     @IBOutlet weak var bannerView: GADBannerView?
+    private var interstitial: GADInterstitialAd?
     
     var scene: GameScene!
+    var games = 0 // games played in a session
     var score = 0
     var seconds = 0
     var timer:Timer?
@@ -49,16 +51,49 @@ class GameViewController: UIViewController {
             view.presentScene(scene)
         }
 
-        //bannerView?.adUnitID = "ca-app-pub-5721843955514300/9838170530"
-        // test ads
-        bannerView?.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView?.adUnitID = "ca-app-pub-5721843955514300/9838170530"
         bannerView?.rootViewController = self
         bannerView?.load(GADRequest())
+        loadInterstitial()
         
         startGame()
         backgroundMusic?.play()
     }
     
+    func loadInterstitial() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5721843955514300/7320652554",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                               })
+    }
+
+    // The ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+      print("Ad did fail to present full screen content.")
+    }
+
+    // The ad presented full screen content.
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+      print("Ad did present full screen content.")
+    }
+
+    // The ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        // Resume the music
+        backgroundMusic?.play()
+        // GADInterstitialAd is a one-time-use object.
+        interstitial = nil
+        // Load a new interstitial.
+        loadInterstitial()
+    }
+
     @IBAction func shuffleButtonTapped() {
         startGame()
     }
@@ -97,14 +132,22 @@ class GameViewController: UIViewController {
     }
     
     func finishGame() {
+        games += 1
         timer?.invalidate()
         timer = nil
         
         gameOverImage?.isHidden = false
-        scene.isUserInteractionEnabled = false
         
+        scene.isUserInteractionEnabled = false
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.startGame))
         view.addGestureRecognizer(tapGestureRecognizer!)
+
+        if interstitial != nil && games % 3 == 0 {
+            backgroundMusic?.stop()
+            interstitial?.present(fromRootViewController: self)
+        } else {
+            loadInterstitial()
+        }
     }
     
     func collapse(for cookieBlock: Set<Cookie>) {
