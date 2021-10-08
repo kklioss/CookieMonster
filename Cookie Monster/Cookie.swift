@@ -29,7 +29,8 @@ enum CookieType: Int {
     }
     
     static func random() -> CookieType {
-        return CookieType(rawValue: Int(arc4random_uniform(6)))!
+        // Use only 5 kinds of cookies. Easier and more fun!
+        return CookieType(rawValue: Int(arc4random_uniform(5)))!
     }
 }
 
