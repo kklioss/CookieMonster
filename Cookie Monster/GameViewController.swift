@@ -75,14 +75,11 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
     }
 
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        //bannerView.isHidden = false
-        //shuffleButton?.isHidden = true
+        print("bannerViewDidReceiveAd")
     }
 
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
         print("Failed to load banner ad: \(error.localizedDescription)")
-        //bannerView.isHidden = true
-        //shuffleButton?.isHidden = false
     }
 
     func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
@@ -103,12 +100,12 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
 
     // The ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
+        print("Failed to present interstitial ad: \(error.localizedDescription)")
     }
 
     // The ad presented full screen content.
     func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
+        print("adDidPresentFullScreenContent")
     }
 
     // The ad dismissed full screen content.
