@@ -14,7 +14,6 @@ import GoogleMobileAds
 class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreenContentDelegate {
     @IBOutlet weak var scoreLabel:UILabel?
     @IBOutlet weak var timeLabel:UILabel?
-    @IBOutlet weak var shuffleButton:UIButton?
     @IBOutlet weak var gameOverImage:UIImageView?
     @IBOutlet weak var bannerView: GADBannerView?
     private var interstitial: GADInterstitialAd?
@@ -116,10 +115,6 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
         interstitial = nil
         // Load a new interstitial.
         loadInterstitial()
-    }
-
-    @IBAction func shuffleButtonTapped() {
-        startGame()
     }
     
     func updateScoreLabel() {
