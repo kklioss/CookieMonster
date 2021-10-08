@@ -2,7 +2,7 @@
 //  Game.swift
 //  Cookie Monster
 //
-//  Created by Haifeng Li on 10/5/21.
+//  Created by Karl Li on 10/5/21.
 //
 
 import Foundation
