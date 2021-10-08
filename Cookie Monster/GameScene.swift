@@ -178,10 +178,6 @@ class GameScene: SKScene {
         }
     }
     
-    private func animateScore() {
-        scoreLabel.run(scoreMoveAction)
-    }
-    
     func animateCollapsedCookies(for cookieBlock: Set<Cookie>, completion: @escaping () -> Void) {
         scoreLabel.run(scoreMoveAction)
         
@@ -287,7 +283,9 @@ class GameScene: SKScene {
                     showSelectionIndicator(of: selectedCookies)
                     scoreLabel.text = String(format: "%ld", score)
                     scoreLabel.position = location
-                    cookieLayer.addChild(scoreLabel)
+                    if !cookieLayer.contains(scoreLabel) {
+                        cookieLayer.addChild(scoreLabel)
+                    }
                     run(tapSound)
                 } else {
                     selectedCookies.removeAll()
