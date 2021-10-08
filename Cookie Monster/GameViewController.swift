@@ -11,7 +11,7 @@ import GameplayKit
 import AVFoundation
 import GoogleMobileAds
 
-class GameViewController: UIViewController, GADFullScreenContentDelegate {
+class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreenContentDelegate {
     @IBOutlet weak var scoreLabel:UILabel?
     @IBOutlet weak var timeLabel:UILabel?
     @IBOutlet weak var shuffleButton:UIButton?
@@ -53,9 +53,9 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
 
         bannerView?.adUnitID = "ca-app-pub-5721843955514300/9838170530"
         bannerView?.rootViewController = self
-        bannerView?.load(GADRequest())
+        bannerView?.delegate = self
         loadInterstitial()
-        
+
         startGame()
         backgroundMusic?.play()
     }
@@ -74,14 +74,38 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
                                })
     }
 
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        shuffleButton?.isHidden = true
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        shuffleButton?.isHidden = false
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+        print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("bannerViewDidDismissScreen")
+    }
+
     // The ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-      print("Ad did fail to present full screen content.")
+        print("Ad did fail to present full screen content.")
     }
 
     // The ad presented full screen content.
     func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-      print("Ad did present full screen content.")
+        print("Ad did present full screen content.")
     }
 
     // The ad dismissed full screen content.
@@ -117,6 +141,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         
         gameOverImage?.isHidden = true
         scene.isUserInteractionEnabled = true
+        bannerView?.load(GADRequest())
 
         score = 0
         seconds = 0

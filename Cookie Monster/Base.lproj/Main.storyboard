@@ -80,6 +80,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="t2b-tm-Mij" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="1e4-rE-cdY"/>
                             <constraint firstAttribute="bottom" secondItem="t2b-tm-Mij" secondAttribute="bottom" constant="30" id="6ax-On-nAv"/>
                             <constraint firstItem="B38-JN-wKV" firstAttribute="top" secondItem="xKD-ju-LUD" secondAttribute="bottom" constant="90" id="6lK-Sg-DEf"/>
                             <constraint firstItem="xKD-ju-LUD" firstAttribute="top" secondItem="ZQr-4J-1s1" secondAttribute="bottom" constant="6" id="77j-RY-RWi"/>
@@ -88,7 +89,6 @@
                             <constraint firstItem="iXP-pz-fHU" firstAttribute="centerX" secondItem="xKD-ju-LUD" secondAttribute="centerX" id="NYO-RN-dCS"/>
                             <constraint firstItem="ZqO-Yh-p8q" firstAttribute="centerY" secondItem="7Or-dS-TKN" secondAttribute="centerY" id="PC3-Gx-s88"/>
                             <constraint firstItem="7Or-dS-TKN" firstAttribute="top" secondItem="ZQr-4J-1s1" secondAttribute="bottom" constant="6" id="SbU-pH-Cmw"/>
-                            <constraint firstItem="xKD-ju-LUD" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="20" id="T4W-m5-h2J"/>
                             <constraint firstItem="xKD-ju-LUD" firstAttribute="top" secondItem="ZQr-4J-1s1" secondAttribute="bottom" constant="6" id="TcC-oi-0gS"/>
                             <constraint firstItem="8fP-7j-dHw" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="atf-5I-4TS"/>
                             <constraint firstItem="ZqO-Yh-p8q" firstAttribute="centerX" secondItem="7Or-dS-TKN" secondAttribute="centerX" constant="-20" id="bTs-UH-gET"/>
