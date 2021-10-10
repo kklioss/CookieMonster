@@ -181,22 +181,11 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
     }
     
     func finishGame() {
-        // Bonus points
-        let leftOver = scene.game.numCookies()
-        if leftOver < 5 {
-            let bonus = 20 * (5 - leftOver)
-            scene.animateBonusScore(bonus: bonus, fireworks: 5 - leftOver) {
-                self.score += bonus
-                self.updateScoreLabel()
-            }
-        }
-
         games += 1
         timer?.invalidate()
         timer = nil
         
         gameOverImage?.isHidden = false
-        
         scene.isUserInteractionEnabled = false
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.startGame))
         view.addGestureRecognizer(tapGestureRecognizer!)
@@ -221,7 +210,18 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
                 let shiftingCookies = self.scene.game.compactEmptyColumns()
                 self.scene.animateShiftingCookies(in: shiftingCookies) {
                     if self.scene.game.isOver() {
-                        self.finishGame()
+                        let leftOver = self.scene.game.numCookies()
+                        if self.score >= 1000 || leftOver < 5 {
+                            // Bonus points
+                            let bonus = 20 * (5 - min(5, leftOver))
+                            self.scene.animateBonusScore(bonus: bonus, fireworks: 30) {
+                                self.score += bonus
+                                self.updateScoreLabel()
+                                self.finishGame()
+                            }
+                        } else {
+                            self.finishGame()
+                        }
                     } else {
                         self.scene.isUserInteractionEnabled = true
                     }

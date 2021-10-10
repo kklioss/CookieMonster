@@ -21,8 +21,8 @@ class GameScene: SKScene {
     private let cropLayer = SKCropNode()
     private let maskLayer = SKNode()
     private let cookieLayer = SKNode()
-    private let scoreLabel = SKLabelNode(fontNamed: "HVD Comic Serif Pro")
-    private var scoreMoveAction: SKAction!
+    private let scoreLabel = createScoreLabel()
+    private var scoreMoveAction = createScoreMoveAction(duration: 0.3)
 
     // The number of cookie columns
     private var width: Int!
@@ -48,25 +48,8 @@ class GameScene: SKScene {
         background.size = size
         addChild(background)
         addChild(gameLayer)
-        
-        // set up score label
-        scoreLabel.fontSize = 32
-        scoreLabel.fontColor = UIColor.white
-        scoreLabel.zPosition = 300
-        
-        // set backgound to score label
-        let scoreLabelBackground = SKSpriteNode(imageNamed: "Tile")
-        scoreLabelBackground.size = CGSize(width: 80, height:40)
-        scoreLabelBackground.position = CGPoint(x: CGFloat(0), y: CGFloat(12))
-        scoreLabelBackground.zPosition = -1
-        scoreLabel.addChild(scoreLabelBackground)
-
-        // score label move action
-        let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 600), duration: 0.3)
-        moveAction.timingMode = .easeOut
-        scoreMoveAction = SKAction.sequence([moveAction, SKAction.removeFromParent()])
     }
-    
+
     func newGame() {
         game = Game(width: width, height: height)
         
@@ -128,23 +111,53 @@ class GameScene: SKScene {
         }
     }
 
+    private static func createScoreLabel() -> SKLabelNode {
+        let scoreLabel = SKLabelNode(fontNamed: "HVD Comic Serif Pro")
+        scoreLabel.fontSize = 32
+        scoreLabel.fontColor = UIColor.white
+        scoreLabel.zPosition = 300
+
+        // set backgound to score label
+        let scoreLabelBackground = SKSpriteNode(imageNamed: "Tile")
+        scoreLabelBackground.size = CGSize(width: 80, height:40)
+        scoreLabelBackground.position = CGPoint(x: CGFloat(0), y: CGFloat(12))
+        scoreLabelBackground.zPosition = -1
+        scoreLabel.addChild(scoreLabelBackground)
+
+        return scoreLabel
+    }
+
+    private static func createScoreMoveAction(duration: TimeInterval) -> SKAction {
+        let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 600), duration: duration)
+        moveAction.timingMode = .easeOut
+        return SKAction.sequence([moveAction, SKAction.removeFromParent()])
+    }
+
     func animateBonusScore(bonus: Int, fireworks: Int, completion: @escaping () -> Void) {
-        for _ in 0..<fireworks {
+        if (bonus > 0) {
+            let bonusLabel = GameScene.createScoreLabel()
+            bonusLabel.text = String(format: "%ld", bonus)
+            bonusLabel.position = CGPoint(x: 70, y: 0)
+            cookieLayer.addChild(bonusLabel)
+
+            let bonusMoveAction = GameScene.createScoreMoveAction(duration: 0.7)
+            bonusLabel.run(bonusMoveAction)
+        }
+
+        for index in 0..<fireworks {
             if let sparkParticles = SKEmitterNode(fileNamed: "SparkParticle.sks") {
-                let x = size.width/2 + CGFloat.random(in: -40...40)
-                let y = size.height/2 + CGFloat.random(in: -80...80)
+                let x = size.width/2 + CGFloat.random(in: -80...80)
+                let y = size.height/2 + CGFloat.random(in: -120...120)
                 sparkParticles.position = CGPoint(x: x, y: y)
-                cookieLayer.addChild(sparkParticles)
+
+                let delay = 0.05 + 0.15 * TimeInterval(index)
+                run(SKAction.wait(forDuration: delay)) {
+                    self.cookieLayer.addChild(sparkParticles)
+                }
             }
         }
 
-        scoreLabel.text = String(format: "%ld", bonus)
-        scoreLabel.position = CGPoint(x: 100, y: 0)
-        if !cookieLayer.contains(scoreLabel) {
-            cookieLayer.addChild(scoreLabel)
-            scoreLabel.run(scoreMoveAction)
-        }
-        run(SKAction.wait(forDuration: 0.3), completion: completion)
+        run(SKAction.wait(forDuration: 0.7), completion: completion)
     }
 
     func animateCollapsedCookies(for cookieBlock: Set<Cookie>, completion: @escaping () -> Void) {
