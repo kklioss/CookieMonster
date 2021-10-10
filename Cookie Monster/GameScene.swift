@@ -23,7 +23,6 @@ class GameScene: SKScene {
     private let cookieLayer = SKNode()
     private let scoreLabel = SKLabelNode(fontNamed: "HVD Comic Serif Pro")
     private var scoreMoveAction: SKAction!
-    private var layerPosition: CGPoint!
 
     // The number of cookie columns
     private var width: Int!
@@ -132,8 +131,14 @@ class GameScene: SKScene {
     func animateCollapsedCookies(for cookieBlock: Set<Cookie>, completion: @escaping () -> Void) {
         scoreLabel.run(scoreMoveAction)
         
+        let burst = game.score(blockSize: cookieBlock.count)
         for cookie in cookieBlock {
             if let sprite = cookie.sprite {
+                if burst > 100, let sparkParticles = SKEmitterNode(fileNamed: "SparkParticle.sks") {
+                    sparkParticles.position = sprite.position
+                    cookieLayer.addChild(sparkParticles)
+                }
+
                 if sprite.action(forKey: "removing") == nil {
                     let scaleAction = SKAction.scale(to: 0.1, duration: 0.3)
                     scaleAction.timingMode = .easeOut
