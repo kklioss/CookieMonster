@@ -127,7 +127,26 @@ class GameScene: SKScene {
             return (false, 0, 0)  // invalid location
         }
     }
-    
+
+    func animateBonusScore(bonus: Int, fireworks: Int, completion: @escaping () -> Void) {
+        for _ in 0..<fireworks {
+            if let sparkParticles = SKEmitterNode(fileNamed: "SparkParticle.sks") {
+                let x = size.width/2 + CGFloat.random(in: -40...40)
+                let y = size.height/2 + CGFloat.random(in: -80...80)
+                sparkParticles.position = CGPoint(x: x, y: y)
+                cookieLayer.addChild(sparkParticles)
+            }
+        }
+
+        scoreLabel.text = String(format: "%ld", bonus)
+        scoreLabel.position = CGPoint(x: 100, y: 0)
+        if !cookieLayer.contains(scoreLabel) {
+            cookieLayer.addChild(scoreLabel)
+            scoreLabel.run(scoreMoveAction)
+        }
+        run(SKAction.wait(forDuration: 0.3), completion: completion)
+    }
+
     func animateCollapsedCookies(for cookieBlock: Set<Cookie>, completion: @escaping () -> Void) {
         scoreLabel.run(scoreMoveAction)
         
