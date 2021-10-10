@@ -57,12 +57,21 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
 
         startGame()
         backgroundMusic?.play()
+
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(applicationDidEnterBackground),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil)
+
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(applicationDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil)
     }
     
     func loadInterstitial() {
-        let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5721843955514300/7320652554",
-                               request: request,
+                               request: GADRequest(),
                                completionHandler: { [self] ad, error in
                                 if let error = error {
                                     print("Failed to load interstitial ad: \(error.localizedDescription)")
@@ -116,18 +125,38 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
         // Load a new interstitial.
         loadInterstitial()
     }
-    
+
     func updateScoreLabel() {
         scoreLabel?.text = String(score)
     }
-    
+
     func updateTimeLabel() {
         let min = (seconds / 60) % 60
         let sec = seconds % 60
 
         timeLabel?.text = String(format: "%02d", min) + ":" + String(format: "%02d", sec)
     }
-    
+
+    @objc func applicationDidEnterBackground() {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+
+    @objc func applicationDidBecomeActive() {
+        if !gameOverImage!.isHidden {
+            startGame()
+        } else if timer == nil {
+            bannerView?.load(GADRequest())
+
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                self.seconds += 1
+                self.updateTimeLabel()
+            }
+        }
+    }
+
     @objc func startGame() {
         if let recognizer = tapGestureRecognizer {
             view.removeGestureRecognizer(recognizer)
