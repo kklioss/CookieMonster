@@ -211,15 +211,12 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
                 self.scene.animateShiftingCookies(in: shiftingCookies) {
                     if self.scene.game.isOver() {
                         let leftOver = self.scene.game.numCookies()
-                        if self.score >= 1000 || leftOver < 5 {
-                            // Bonus points
-                            let bonus = 20 * (5 - min(5, leftOver))
-                            self.scene.animateBonusScore(bonus: bonus, fireworks: 30) {
+                        let bonus = 20 * (5 - min(5, leftOver))
+                        self.scene.animateBonusScore(bonus: bonus, fireworks: 50) {
+                            if bonus > 0 {
                                 self.score += bonus
                                 self.updateScoreLabel()
-                                self.finishGame()
                             }
-                        } else {
                             self.finishGame()
                         }
                     } else {
