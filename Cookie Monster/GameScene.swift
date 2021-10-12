@@ -60,7 +60,7 @@ class GameScene: SKScene {
                 if let cookie = game.cookieAt(x, y) {
                     let sprite = SKSpriteNode(imageNamed: cookie.type.spriteName)
                     sprite.size = tileSize
-                    sprite.position = pointFor(x, y)
+                    sprite.position = pointAt(x, y)
                     cookieLayer.addChild(sprite)
                     cookie.sprite = sprite
                 }
@@ -68,12 +68,23 @@ class GameScene: SKScene {
         }
     }
     
-    private func pointFor(_ x: Int, _ y: Int) -> CGPoint {
+    // Convert cookie coordinates to CGPoint
+    private func pointAt(_ x: Int, _ y: Int) -> CGPoint {
         return CGPoint(
             x: CGFloat(x) * tileSize.width + tileSize.width / 2,
             y: CGFloat(y) * tileSize.height + tileSize.height / 2)
     }
-    
+
+    // Convert touch point to cookie coordinates
+    private func cookieCellAt(_ point: CGPoint) -> (success: Bool, x: Int, y: Int) {
+        if point.x >= 0 && point.x < CGFloat(width) * tileSize.width &&
+            point.y >= 0 && point.y < CGFloat(height) * tileSize.height {
+            return (true, Int(point.x / tileSize.width), Int(point.y / tileSize.height))
+        } else {
+            return (false, 0, 0)  // invalid location
+        }
+    }
+
     func showSelectionIndicator(of cookies: Set<Cookie>) {
         for cookie in cookies {
             if let sprite = cookie.sprite {
@@ -88,26 +99,15 @@ class GameScene: SKScene {
             }
         }
     }
-    
+
     func hideSelectionIndicator(of cookies: Set<Cookie>) {
         for cookie in cookies {
             if let sprite = cookie.sprite {
                 if let selectionSprite = sprite.childNode(withName: "selection") {
-                    selectionSprite.run(SKAction.sequence([
-                                                            SKAction.fadeOut(withDuration: 0.3),
-                                                            SKAction.removeFromParent()]))
+                    selectionSprite.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
+                                                           SKAction.removeFromParent()]))
                 }
             }
-        }
-    }
-    
-    // Convert touch point to cookie coordinates
-    private func convertPoint(_ point: CGPoint) -> (success: Bool, x: Int, y: Int) {
-        if point.x >= 0 && point.x < CGFloat(width) * tileSize.width &&
-            point.y >= 0 && point.y < CGFloat(height) * tileSize.height {
-            return (true, Int(point.x / tileSize.width), Int(point.y / tileSize.height))
-        } else {
-            return (false, 0, 0)  // invalid location
         }
     }
 
@@ -184,7 +184,7 @@ class GameScene: SKScene {
         for column in fallingCookieColumns {
             for index in 0..<column.count {
                 let cookie = column[index]
-                let newPosition = pointFor(cookie.x, cookie.y)
+                let newPosition = pointAt(cookie.x, cookie.y)
                 let delay = 0.05 + 0.15 * TimeInterval(index)
                 let sprite = cookie.sprite!   // sprite always exists at this point
                 let duration = TimeInterval(((sprite.position.y - newPosition.y) / tileSize.height) * 0.1)
@@ -204,7 +204,7 @@ class GameScene: SKScene {
         for index in 0..<shiftingCookieColumns.count {
             let column = shiftingCookieColumns[index]
             for cookie in column {
-                let newPosition = pointFor(cookie.x, cookie.y)
+                let newPosition = pointAt(cookie.x, cookie.y)
                 let delay = 0.05 + 0.15 * TimeInterval(index)
                 let sprite = cookie.sprite!   // sprite always exists at this point
                 let duration = TimeInterval(((sprite.position.x - newPosition.x) / tileSize.width) * 0.1)
@@ -246,7 +246,7 @@ class GameScene: SKScene {
             for y in 0..<height {
                 let tileNode = SKSpriteNode(imageNamed: "MaskTile")
                 tileNode.size = tileSize
-                tileNode.position = pointFor(x, y)
+                tileNode.position = pointAt(x, y)
                 maskLayer.addChild(tileNode)
             }
         }
@@ -267,7 +267,7 @@ class GameScene: SKScene {
                 if tileId != 0 && tileId != 6 && tileId != 9 {
                     let tileNode = SKSpriteNode(imageNamed: String(format: "Tile_%ld", tileId))
                     tileNode.size = tileSize
-                    var point = pointFor(x, y)
+                    var point = pointAt(x, y)
                     point.x -= tileSize.width / 2
                     point.y -= tileSize.height / 2
                     tileNode.position = point
@@ -292,7 +292,7 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: cookieLayer)
-        let (success, x, y) = convertPoint(location)
+        let (success, x, y) = cookieCellAt(location)
         if success, let cookie = game.cookieAt(x, y) {
             if !selectedCookies.isEmpty && !selectedCookies.contains(cookie) {
                 hideSelectionIndicator(of: selectedCookies)
@@ -309,7 +309,7 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: cookieLayer)
-        let (success, x, y) = convertPoint(location)
+        let (success, x, y) = cookieCellAt(location)
         if success, let cookie = game.cookieAt(x, y) {
             if selectedCookies.contains(cookie) {
                 controller.collapse(for: selectedCookies)
