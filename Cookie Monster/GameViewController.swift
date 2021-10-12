@@ -212,7 +212,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
                     if self.scene.game.isOver() {
                         let leftOver = self.scene.game.numCookies()
                         let bonus = 20 * (5 - min(5, leftOver))
-                        self.scene.animateBonusScore(bonus: bonus, fireworks: 50) {
+                        self.scene.animateBonusScore(bonus: bonus, fireworks: 3) {
                             if bonus > 0 {
                                 self.score += bonus
                                 self.updateScoreLabel()

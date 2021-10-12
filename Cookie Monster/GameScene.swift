@@ -144,16 +144,12 @@ class GameScene: SKScene {
             bonusLabel.run(bonusMoveAction)
         }
 
-        for index in 0..<fireworks {
+        for _ in 0..<fireworks {
             if let sparkParticles = SKEmitterNode(fileNamed: "SparkParticle.sks") {
                 let x = size.width/2 + CGFloat.random(in: -80...80)
                 let y = size.height/2 + CGFloat.random(in: -120...120)
                 sparkParticles.position = CGPoint(x: x, y: y)
-
-                let delay = 0.05 + 0.15 * TimeInterval(index)
-                run(SKAction.wait(forDuration: delay)) {
-                    self.cookieLayer.addChild(sparkParticles)
-                }
+                self.cookieLayer.addChild(sparkParticles)
             }
         }
 
