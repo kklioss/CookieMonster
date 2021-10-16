@@ -14,7 +14,8 @@ class GameScene: SKScene {
     private let collapseSound = SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)
     private let fallingCookieSound = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
     private let addCookieSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
-    
+    private let fireworkSound = SKAction.playSoundFileNamed("Firework.mp3", waitForCompletion: false)
+
     private let tileSize = CGSize(width: 32, height: 36)
     private let gameLayer = SKNode()
     private let tilesLayer = SKNode()
@@ -133,7 +134,7 @@ class GameScene: SKScene {
         return SKAction.sequence([moveAction, SKAction.removeFromParent()])
     }
 
-    func animateBonusScore(bonus: Int, fireworks: Int, completion: @escaping () -> Void) {
+    func animateFireworkBonusScore(fireworks: Int, bonus: Int, completion: @escaping () -> Void) {
         if (bonus > 0) {
             let bonusLabel = GameScene.createScoreLabel()
             bonusLabel.text = String(format: "%ld", bonus)
@@ -153,6 +154,7 @@ class GameScene: SKScene {
             }
         }
 
+        run(fireworkSound)
         run(SKAction.wait(forDuration: 0.7), completion: completion)
     }
 

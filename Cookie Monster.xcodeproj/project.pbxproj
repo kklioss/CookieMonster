@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		146BAE777288AF0B6A4DACDD /* Pods_Cookie_Monster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583A7B7E2393AF6C3BFB5736 /* Pods_Cookie_Monster.framework */; };
 		4617624727126AC800C5E257 /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4617624627126AC800C5E257 /* SparkParticle.sks */; };
+		46AD7D0F271A597700D1CEF2 /* Firework.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 46AD7D0E271A597700D1CEF2 /* Firework.mp3 */; };
 		46B2AAAD270CECC700ED9E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2AAAC270CECC700ED9E39 /* AppDelegate.swift */; };
 		46B2AAB3270CECC700ED9E39 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2AAB2270CECC700ED9E39 /* GameScene.swift */; };
 		46B2AAB5270CECC700ED9E39 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2AAB4270CECC700ED9E39 /* GameViewController.swift */; };
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		4617624627126AC800C5E257 /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
+		46AD7D0E271A597700D1CEF2 /* Firework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Firework.mp3; sourceTree = "<group>"; };
 		46B2AAA9270CECC700ED9E39 /* Cookie Monster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cookie Monster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B2AAAC270CECC700ED9E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B2AAB2270CECC700ED9E39 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				46B2AAC8270D069600ED9E39 /* Chomp.wav */,
 				46B2AAC6270D069600ED9E39 /* Drip.wav */,
 				46B2AACB270D069700ED9E39 /* Error.wav */,
+				46AD7D0E271A597700D1CEF2 /* Firework.mp3 */,
 				46B2AAC7270D069600ED9E39 /* Ka-Ching.wav */,
 				46B2AACA270D069600ED9E39 /* Mining by Moonlight.mp3 */,
 				46B2AAC9270D069600ED9E39 /* Scrape.wav */,
@@ -474,6 +477,7 @@
 				46B2AB66270D073900ED9E39 /* Tile_13@3x.png in Resources */,
 				46B2AAFB270D06D000ED9E39 /* Croissant-Highlighted.png in Resources */,
 				46B2AB70270D073900ED9E39 /* Tile_15.png in Resources */,
+				46AD7D0F271A597700D1CEF2 /* Firework.mp3 in Resources */,
 				46B2AB1B270D06D000ED9E39 /* Macaroon@3x.png in Resources */,
 				46B2AAB8270CECC700ED9E39 /* Main.storyboard in Resources */,
 				46B2AB6A270D073900ED9E39 /* Tile_1.png in Resources */,
