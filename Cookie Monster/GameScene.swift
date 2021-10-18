@@ -25,6 +25,8 @@ class GameScene: SKScene {
     private let scoreLabel = createScoreLabel()
     private var scoreMoveAction = createScoreMoveAction(duration: 0.3)
 
+    // Safe areas help place views within the visible portion of the overall interface.
+    private var safeArea: CGRect!
     // The number of cookie columns
     private var width: Int!
     // THe number of cookie rows
@@ -145,10 +147,12 @@ class GameScene: SKScene {
             bonusLabel.run(bonusMoveAction)
         }
 
+        let xRange = tileSize.width * CGFloat(width) / 4
+        let yRange = tileSize.height * CGFloat(height) / 4
         for _ in 0..<fireworks {
             if let sparkParticles = SKEmitterNode(fileNamed: "SparkParticle.sks") {
-                let x = size.width/2 + CGFloat.random(in: -80...80)
-                let y = size.height/2 + CGFloat.random(in: -120...120)
+                let x = safeArea.width/2 + CGFloat.random(in: -xRange...xRange)
+                let y = safeArea.height/2 + CGFloat.random(in: 0...yRange)
                 sparkParticles.position = CGPoint(x: x, y: y)
                 self.cookieLayer.addChild(sparkParticles)
             }
@@ -225,7 +229,7 @@ class GameScene: SKScene {
         super.didMove(to: view)
         
         let window = UIApplication.shared.windows[0]
-        let safeArea = window.safeAreaLayoutGuide.layoutFrame
+        safeArea = window.safeAreaLayoutGuide.layoutFrame
 
         // Fix 10 columns and scale the tile size
         let tileWidth = safeArea.width / 10
