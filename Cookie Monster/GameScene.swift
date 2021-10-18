@@ -16,7 +16,7 @@ class GameScene: SKScene {
     private let addCookieSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
     private let fireworkSound = SKAction.playSoundFileNamed("Firework.mp3", waitForCompletion: false)
 
-    private let tileSize = CGSize(width: 32, height: 36)
+    private var tileSize = CGSize(width: 32, height: 36)
     private let gameLayer = SKNode()
     private let tilesLayer = SKNode()
     private let cropLayer = SKCropNode()
@@ -226,6 +226,12 @@ class GameScene: SKScene {
         
         let window = UIApplication.shared.windows[0]
         let safeArea = window.safeAreaLayoutGuide.layoutFrame
+
+        // Fix 10 columns and scale the tile size
+        let tileWidth = safeArea.width / 10
+        let tileHeight = tileSize.height * tileWidth / tileSize.width
+        tileSize = CGSize(width: tileWidth, height: tileHeight)
+
         // 180 points for top score/time and bottom banner
         height = Int((safeArea.height - 180) / tileSize.height)
         width = Int(safeArea.width / tileSize.width)
