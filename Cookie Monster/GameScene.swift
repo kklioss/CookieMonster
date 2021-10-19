@@ -147,13 +147,14 @@ class GameScene: SKScene {
             bonusLabel.run(bonusMoveAction)
         }
 
-        let xRange = tileSize.width * CGFloat(width) / 4
-        let yRange = tileSize.height * CGFloat(height) / 4
+        let dx = tileSize.width * CGFloat(width) / 4
+        let dy = tileSize.height * CGFloat(height) / 4
         for _ in 0..<fireworks {
             if let sparkParticles = SKEmitterNode(fileNamed: "SparkParticle.sks") {
-                let x = safeArea.width/2 + CGFloat.random(in: -xRange...xRange)
-                let y = safeArea.height/2 + CGFloat.random(in: 0...yRange)
+                let x = safeArea.width/2 + CGFloat.random(in: -dx...dx)
+                let y = safeArea.height/2 + CGFloat.random(in: 0...dy)
                 sparkParticles.position = CGPoint(x: x, y: y)
+                sparkParticles.particlePositionRange = CGVector(dx: dx, dy: dy)
                 self.cookieLayer.addChild(sparkParticles)
             }
         }

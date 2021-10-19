@@ -210,9 +210,8 @@ class GameViewController: UIViewController, GADBannerViewDelegate, GADFullScreen
                 let shiftingCookies = self.scene.game.compactEmptyColumns()
                 self.scene.animateShiftingCookies(in: shiftingCookies) {
                     if self.scene.game.isOver() {
-                        let leftOver = self.scene.game.numCookies()
-                        let bonus = 20 * (5 - min(5, leftOver))
-                        self.scene.animateFireworkBonusScore(fireworks: 3, bonus: bonus) {
+                        let bonus = 5 - min(5, self.scene.game.numCookies())
+                        self.scene.animateFireworkBonusScore(fireworks: 3 + bonus, bonus: 20 * bonus) {
                             if bonus > 0 {
                                 self.score += bonus
                                 self.updateScoreLabel()
