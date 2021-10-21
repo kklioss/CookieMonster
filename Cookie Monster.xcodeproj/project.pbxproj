@@ -111,7 +111,7 @@
 /* Begin PBXFileReference section */
 		4617624627126AC800C5E257 /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
 		46AD7D0E271A597700D1CEF2 /* Firework.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Firework.mp3; sourceTree = "<group>"; };
-		46B2AAA9270CECC700ED9E39 /* Cookie Monster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cookie Monster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46B2AAA9270CECC700ED9E39 /* Cookie Munch Crunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cookie Munch Crunch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B2AAAC270CECC700ED9E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B2AAB2270CECC700ED9E39 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		46B2AAB4270CECC700ED9E39 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		46B2AAAA270CECC700ED9E39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				46B2AAA9270CECC700ED9E39 /* Cookie Monster.app */,
+				46B2AAA9270CECC700ED9E39 /* Cookie Munch Crunch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -402,9 +402,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		46B2AAA8270CECC700ED9E39 /* Cookie Monster */ = {
+		46B2AAA8270CECC700ED9E39 /* Cookie Munch Crunch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 46B2AABE270CECCB00ED9E39 /* Build configuration list for PBXNativeTarget "Cookie Monster" */;
+			buildConfigurationList = 46B2AABE270CECCB00ED9E39 /* Build configuration list for PBXNativeTarget "Cookie Munch Crunch" */;
 			buildPhases = (
 				435CDEC711DCC837F17A89F8 /* [CP] Check Pods Manifest.lock */,
 				46B2AAA5270CECC700ED9E39 /* Sources */,
@@ -416,9 +416,9 @@
 			);
 			dependencies = (
 			);
-			name = "Cookie Monster";
+			name = "Cookie Munch Crunch";
 			productName = "Cookie Monster";
-			productReference = 46B2AAA9270CECC700ED9E39 /* Cookie Monster.app */;
+			productReference = 46B2AAA9270CECC700ED9E39 /* Cookie Munch Crunch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -448,7 +448,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				46B2AAA8270CECC700ED9E39 /* Cookie Monster */,
+				46B2AAA8270CECC700ED9E39 /* Cookie Munch Crunch */,
 			);
 		};
 /* End PBXProject section */
@@ -748,7 +748,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1A5584;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 9HX9MLM5XJ;
 				INFOPLIST_FILE = "Cookie Monster/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -770,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1A5584;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 9HX9MLM5XJ;
 				INFOPLIST_FILE = "Cookie Monster/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -797,7 +797,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46B2AABE270CECCB00ED9E39 /* Build configuration list for PBXNativeTarget "Cookie Monster" */ = {
+		46B2AABE270CECCB00ED9E39 /* Build configuration list for PBXNativeTarget "Cookie Munch Crunch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46B2AABF270CECCB00ED9E39 /* Debug */,
