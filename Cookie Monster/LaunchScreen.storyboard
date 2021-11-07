@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,35 +21,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Croissant-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="0cs-b7-Kll">
-                                <rect key="frame" x="-37" y="48" width="240" height="128"/>
+                                <rect key="frame" x="-37" y="205" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="MQv-aT-3y2"/>
                                     <constraint firstAttribute="height" constant="128" id="dOj-4T-qCb"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cupcake-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="lYq-qE-0cv">
-                                <rect key="frame" x="190.5" y="70.5" width="240" height="128"/>
+                                <rect key="frame" x="190.5" y="227" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="PQx-bg-KS3"/>
                                     <constraint firstAttribute="width" constant="240" id="SZ9-Ql-81R"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Donut-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="YYP-dd-yXu">
-                                <rect key="frame" x="-58" y="249.5" width="240" height="128"/>
+                                <rect key="frame" x="-58" y="473.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="1CM-F9-fsY"/>
                                     <constraint firstAttribute="width" constant="240" id="iOD-IT-GQz"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SugarCookie-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="bz3-KH-LAP">
-                                <rect key="frame" x="66.5" y="160" width="240" height="128"/>
+                                <rect key="frame" x="66.5" y="361.5" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="af7-ca-78O"/>
                                     <constraint firstAttribute="width" constant="240" id="lkv-ap-cj1"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Macaroon-Highlighted.png" translatesAutoresizingMaskIntoConstraints="NO" id="4d5-fX-LOB">
-                                <rect key="frame" x="211" y="272" width="240" height="128"/>
+                                <rect key="frame" x="211" y="496" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="J9F-Ea-UdC"/>
                                     <constraint firstAttribute="height" constant="128" id="Qcg-WI-eTB"/>
@@ -61,14 +61,14 @@
                         <constraints>
                             <constraint firstItem="0cs-b7-Kll" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.4" id="CNL-wg-PSd"/>
                             <constraint firstItem="bz3-KH-LAP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.9" id="DhQ-Ca-zIX"/>
-                            <constraint firstItem="0cs-b7-Kll" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.25" id="HaF-UR-Cmd"/>
+                            <constraint firstItem="0cs-b7-Kll" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.6" id="HaF-UR-Cmd"/>
                             <constraint firstItem="IqA-Cg-Nqu" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="JTP-pX-D9g"/>
-                            <constraint firstItem="4d5-fX-LOB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.75" id="Q2z-hW-Ge5"/>
+                            <constraint firstItem="4d5-fX-LOB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="1.25" id="Q2z-hW-Ge5"/>
                             <constraint firstItem="IqA-Cg-Nqu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="TR2-1T-Uhk"/>
                             <constraint firstItem="4d5-fX-LOB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="1.6" id="Vhy-YI-MYN"/>
-                            <constraint firstItem="lYq-qE-0cv" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.3" id="WaI-IH-4mu"/>
-                            <constraint firstItem="bz3-KH-LAP" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.5" id="exF-dC-nRF"/>
-                            <constraint firstItem="YYP-dd-yXu" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.7" id="i8c-Lc-YBx"/>
+                            <constraint firstItem="lYq-qE-0cv" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.65" id="WaI-IH-4mu"/>
+                            <constraint firstItem="bz3-KH-LAP" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.95" id="exF-dC-nRF"/>
+                            <constraint firstItem="YYP-dd-yXu" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="1.2" id="i8c-Lc-YBx"/>
                             <constraint firstItem="YYP-dd-yXu" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.3" id="jfz-wv-Xwr"/>
                             <constraint firstAttribute="bottom" secondItem="IqA-Cg-Nqu" secondAttribute="bottom" id="oJq-ZX-6Sk"/>
                             <constraint firstItem="lYq-qE-0cv" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="1.5" id="qOc-AA-ZPI"/>
@@ -87,7 +87,7 @@
         <image name="Donut-Highlighted.png" width="32" height="36"/>
         <image name="Macaroon-Highlighted.png" width="32" height="36"/>
         <image name="SugarCookie-Highlighted.png" width="32" height="36"/>
-        <image name="background" width="276" height="597.33331298828125"/>
+        <image name="background" width="375" height="667"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
