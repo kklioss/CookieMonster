@@ -6,10 +6,12 @@ The player then clicks on any two or more connecting same-kind cookies to elimin
 from the matrix, earning an appropriate number of points in the process. The more cookies
 eliminated at once, the higher the points added to the player's score.
 
+<p align="center">
 <img src="Screenshots/iPhone 12 Pro Max.png" 
         alt="Cookie Monster" 
         width="200"
         style="display: block; margin: 0 auto" />
+</p>
 
 The scoring can be expressed in the formula "Y=X(X-1)". X represents the number of cookies
 grouped together, Y is the resulting score. For example an elimination of 16 cookies will
