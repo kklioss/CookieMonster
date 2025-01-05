@@ -1,5 +1,6 @@
-<img height="32" alt="CookieMonster" style="float: left; margin-right: 20px;" src="Cookie%20Monster/Assets.xcassets/AppIcon.appiconset/cookie_monster.png"> <h1>Cookie Monster</h1>
+# Cookie Monster
 
+<img align="left" width="96" height="96" src="/Cookie%20Monster/Assets.xcassets/AppIcon.appiconset/cookie_monster.png">
 Cookie Monster is a modern implementation of the classic game Jawbreaker for iOS.
 The game board consists of a screen of different kinds of cookies arranged in a matrix.
 The player then clicks on any two or more connecting same-kind cookies to eliminate them
@@ -10,7 +11,7 @@ eliminated at once, the higher the points added to the player's score.
 <img src="Screenshots/iPhone 12 Pro Max.png" 
         alt="Cookie Monster" 
         width="200"
-        style="display: block; margin: 0 auto" />
+        style="display: block; margin: 20 auto;" />
 </p>
 
 The scoring can be expressed in the formula "Y=X(X-1)". X represents the number of cookies
