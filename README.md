@@ -1,4 +1,4 @@
-# Cookie Monster
+<img height="32" alt="CookieMonster" style="float: left; margin-right: 20px;" src="Cookie%20Monster/Assets.xcassets/AppIcon.appiconset/cookie_monster.png"> <h1>Cookie Monster</h1>
 
 Cookie Monster is a modern implementation of the classic game Jawbreaker for iOS.
 The game board consists of a screen of different kinds of cookies arranged in a matrix.
